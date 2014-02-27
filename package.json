@@ -1,0 +1,22 @@
+{
+  "name": "jquery-event-slider",
+  "title": "jQuery Event Slider",
+  "description": "A responsive CSS slider that can fire multiple custom events.",
+  "author": "Tommy Fisher",
+  "homepage": "http://tommyfisher.net",
+  "version": "0.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.7",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-compass": "~0.7.1",
+    "grunt-contrib-compass": "~0.5.3",
+    "grunt-contrib-compass": "~0.6.0"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  }
+}

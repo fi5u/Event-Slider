@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Boilerplate</title>
+        <link rel="stylesheet" href="../dist/style.css">
+        <link rel="stylesheet" href="custom-style.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../dist/jquery.event-slider.js"></script>
+	</head>
+	<body>
+
+        <ul class="eventSlider">
+            <li class="eventSlider__slide1">
+                <a href="#">
+                    <div class="eventSlider__layer1"></div>
+                    <div class="eventSlider__layer2"></div>
+                </a>
+            </li>
+            <li class="eventSlider__slide2">
+                <a href="#">
+                    <div class="eventSlider__layer1"></div>
+                    <div class="eventSlider__layer2"></div>
+                </a>
+            </li>
+        </ul>
+
+
+		<script>
+			$(function() {
+                function goinit () {
+                    alert('init');
+                }
+
+                function goprestart () {
+                    alert('pre start');
+                }
+
+                function gopoststart () {
+                    alert('post start');
+                }
+
+                function gopreend () {
+                    alert('pre end');
+                }
+
+                function gopostend () {
+                    alert('post end');
+                }
+
+                function infunc (param) {
+                    alert('in func ' + param);
+                }
+
+				var mySlider = $('.eventSlider').eventSlider({
+                    hoverPause: true,
+                    auto: true,
+                    delay: 3000,
+                    eventsPre: [[0, 500]],
+                    eventsPost: [[0, 100]],
+                    functionsPre:[[]],
+                    direction: 'next',
+                    transitionDuration: 0,
+                    onPreStart: function() {
+                        //goprestart();
+                    },
+                    onPreEnd: function() {
+                        //gopreend();
+                    },
+                    onPostStart: function() {
+                        //gopoststart();
+                    },
+                    onPostEnd: function() {
+                        //gopostend();
+                    }
+				});
+
+                $('#start').click(function() {
+                    mySlider.karuselli("start");
+                });
+
+                $('#stop').click(function() {
+                    mySlider.karuselli("stop");
+                });
+			});
+		</script>
+	</body>
+</html>
