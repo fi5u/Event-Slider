@@ -43,7 +43,7 @@ body {
 
     // Transition in
     @include transition-property(all);
-    @include transition-duration(0.5s);
+    @include transition-duration(0.4s);
     @include transition-timing-function(ease-out);
 }
 
@@ -128,11 +128,12 @@ body {
 .eventSlider-direction-post-next.eventSlider-event-post-00 {
     .eventSlider__slide1,
     .eventSlider__slide2 {
+
         .eventSlider__layer1,
         .eventSlider__layer2 {
             @include opacity(0);
 
-            @include transition-duration(0s);
+            @include transition-duration(0.05s);
             @include translateX(-50%);
         }
 
@@ -145,11 +146,12 @@ body {
 .eventSlider-direction-post-prev.eventSlider-event-post-00 {
     .eventSlider__slide1,
     .eventSlider__slide2 {
+
         .eventSlider__layer1,
         .eventSlider__layer2 {
             @include opacity(0);
 
-            @include transition-duration(0s);
+            @include transition-duration(0.05s);
             @include translateX(100%);
         }
 

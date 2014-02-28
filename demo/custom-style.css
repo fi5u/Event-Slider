@@ -46,10 +46,10 @@ body {
   -moz-transition-property: all;
   -o-transition-property: all;
   transition-property: all;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   -webkit-transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
   -o-transition-timing-function: ease-out;
@@ -152,7 +152,7 @@ body {
   transition-timing-function: ease-in;
 }
 
-/* line 132, custom-style.scss */
+/* line 133, custom-style.scss */
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer1,
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer1,
@@ -162,17 +162,17 @@ body {
   -moz-opacity: 0;
   -khtml-opacity: 0;
   opacity: 0;
-  -webkit-transition-duration: 0s;
-  -moz-transition-duration: 0s;
-  -o-transition-duration: 0s;
-  transition-duration: 0s;
+  -webkit-transition-duration: 0.01s;
+  -moz-transition-duration: 0.01s;
+  -o-transition-duration: 0.01s;
+  transition-duration: 0.01s;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-/* line 139, custom-style.scss */
+/* line 140, custom-style.scss */
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2 {
   -webkit-transform: translateX(-100%);
@@ -182,7 +182,7 @@ body {
   transform: translateX(-100%);
 }
 
-/* line 149, custom-style.scss */
+/* line 151, custom-style.scss */
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer1,
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer1,
@@ -192,17 +192,17 @@ body {
   -moz-opacity: 0;
   -khtml-opacity: 0;
   opacity: 0;
-  -webkit-transition-duration: 0s;
-  -moz-transition-duration: 0s;
-  -o-transition-duration: 0s;
-  transition-duration: 0s;
+  -webkit-transition-duration: 0.01s;
+  -moz-transition-duration: 0.01s;
+  -o-transition-duration: 0.01s;
+  transition-duration: 0.01s;
   -webkit-transform: translateX(100%);
   -moz-transform: translateX(100%);
   -ms-transform: translateX(100%);
   -o-transform: translateX(100%);
   transform: translateX(100%);
 }
-/* line 156, custom-style.scss */
+/* line 158, custom-style.scss */
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2 {
   -webkit-transform: translateX(50%);
@@ -212,7 +212,7 @@ body {
   transform: translateX(50%);
 }
 
-/* line 164, custom-style.scss */
+/* line 166, custom-style.scss */
 .eventSlider__slide1.slider_hidden .eventSlider__layer1,
 .eventSlider__slide2.slider_hidden .eventSlider__layer1 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -221,7 +221,7 @@ body {
   -khtml-opacity: 0;
   opacity: 0;
 }
-/* line 168, custom-style.scss */
+/* line 170, custom-style.scss */
 .eventSlider__slide1.slider_hidden .eventSlider__layer2,
 .eventSlider__slide2.slider_hidden .eventSlider__layer2 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
