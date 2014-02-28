@@ -14,6 +14,8 @@
             delay: 3000,
             hoverPause: false,
             direction: 'next',
+            pager: true,
+            firstSlide: 0,
             eventsPre: [],
             eventsPost: [],
             functionsPre: [],
@@ -39,6 +41,7 @@
 
 	Plugin.prototype = {
         // Set instance-wide vars
+        slider: {}, // Namespace
         slideCount: '', // Number of slides
         hiddenClass: 'slider_hidden', // Class to apply to all non-visible slides
         autoTimer: {}, // Create the timer variable
@@ -67,6 +70,12 @@
 
             // Insert the slider nav into the DOM
             this.buildNav();
+
+            // Insert the pager into the DOM
+            this.buildPager();
+
+            // Set the current active pager item
+            this.setActivePagerItem(this.options.firstSlide);
 
             // Detect if the browser supports CSS transforms
             this.detectCss();
@@ -117,6 +126,54 @@
              */
 
             $(this.element).closest('.' + pluginName + '-wrap').append('<div class="' + pluginName + '-navbar"><div class="'+pluginName+'-left"></div><div class="'+pluginName+'-right"></div>');
+        },
+
+        buildPager: function() {
+            /**
+             *  If required, build pager
+             */
+
+            var selfPagerEl,
+
+                // Set self so that 'this' can be accessed from delegate
+                self = this;
+
+            // If pager is required, go ahead and build it
+            if (this.options.pager) {
+
+                // Set the HTML for the pager element
+                this.slider.pagerEl = $('<div class="' + pluginName + '-pager" />');
+
+                // Add the pager element to the DOM
+                $(this.element).closest('.' + pluginName + '-wrap').append(this.slider.pagerEl);
+
+                selfPagerEl = this.slider.pagerEl;
+
+                // Populate the pager
+                this.populatePager();
+
+                // Assign the pager click binding
+                this.slider.pagerEl.delegate('a', 'click', function() {
+                    self.pagerClick(selfPagerEl, this);
+                });
+            }
+        },
+
+        populatePager: function() {
+            /**
+             *  Add the correct number of items to the pager
+             */
+
+            var i,
+                pagerItems = '';
+
+            // For each slide add a pager-item element
+            for (i = 0; i < this.slideCount; i++) {
+                pagerItems += '<a class="' + pluginName + '-pager-item" data-index="' + i + '"></a>';
+            }
+
+            // Add the HTML to the DOM
+            this.slider.pagerEl.html(pagerItems);
         },
 
         detectCss: function() {
@@ -272,6 +329,22 @@
             $(this.element).addClass(pluginName + '-direction-' + locus + '-' + direction);
         },
 
+        setActivePagerItem: function(index) {
+            /**
+             *  Remove current instance of active pager item and add class 'active' to the pager item at index
+             */
+
+            // If the user wants a pager continue
+            if (this.options.pager) {
+                // Remove current instance of 'active' from pager item
+                $(this.slider.pagerEl).find('a.active').removeClass('active');
+
+                // Add the class of 'active' to the pager item at index
+                $(this.slider.pagerEl).find('a').eq(index).addClass('active');
+
+            }
+        },
+
 
 
         /**
@@ -395,6 +468,10 @@
                 }
             }
 
+            // Make appropriate pager item 'current'
+            this.setActivePagerItem(targetIndex);
+
+            // Change the transparency of target slide
             this.setLiOpacity(targetIndex, direction);
         },
 
@@ -478,6 +555,28 @@
                 self.next();
                 event.preventDefault();
             });
+        },
+
+        pagerClick: function(pager, pagerItem) {
+            /**
+             *  Slider pager click events
+             */
+
+            var activeSlide = $(pager).prevAll('.' + pluginName).find('li:not(".'+ this.hiddenClass +'")').index(),
+                targetSlide = $(pagerItem).attr('data-index'),
+                direction;
+
+            if (activeSlide >= targetSlide) {
+                direction = 'prev';
+            } else {
+                direction = 'next';
+            }
+
+            // Make appropriate pager item 'current'
+            this.setActivePagerItem(targetSlide);
+
+            // Go to target slide
+            this.setLiOpacity(targetSlide, direction);
         },
 
         hoverPauseFn: function() {

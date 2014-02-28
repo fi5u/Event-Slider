@@ -1,4 +1,182 @@
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+
+@mixin opacity($op) {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$op * 100})";
+    filter: alpha(opacity=#{$op * 100});
+    -moz-opacity: $op;
+    -khtml-opacity: $op;
+    opacity: $op;
+}
+
 body {
     max-width: 1170px;
     margin: 0 auto;
+}
+
+.eventSlider {
+    background: url(../demo/slider-bg.jpg) no-repeat center center;
+    background-size: cover;
+
+    li {
+        // Slide transition properties
+        @include transition-property(all);
+        @include transition-duration(0s);
+        @include transition-timing-function(ease-in);
+    }
+}
+
+%eventSlider__slide {
+    position: relative;
+}
+
+%eventSlider__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include opacity(1);
+
+    @include translateX(0%);
+
+    // Transition in
+    @include transition-property(all);
+    @include transition-duration(0.5s);
+    @include transition-timing-function(ease-out);
+}
+
+%eventSlider__layer1 {
+    @extend %eventSlider__layer;
+}
+
+%eventSlider__layer2 {
+    @extend %eventSlider__layer;
+}
+
+.eventSlider__slide1 {
+    .eventSlider__layer1 {
+        @extend %eventSlider__layer1;
+        background: url(../demo/slide1_layer1.png) no-repeat center center;
+        background-size: contain;
+    }
+
+    .eventSlider__layer2 {
+        @extend %eventSlider__layer2;
+        background: url(../demo/slide1_layer2.png) no-repeat center center;
+        background-size: contain;
+    }
+}
+
+.eventSlider__slide2 {
+    .eventSlider__layer1 {
+        @extend %eventSlider__layer1;
+        background: url(../demo/slide2_layer1.png) no-repeat center center;
+        background-size: contain;
+    }
+
+    .eventSlider__layer2 {
+        @extend %eventSlider__layer2;
+        background: url(../demo/slide2_layer2.png) no-repeat center center;
+        background-size: contain;
+    }
+}
+
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 {
+    .eventSlider__slide1,
+    .eventSlider__slide2 {
+        .eventSlider__layer1 {
+            @include opacity(0);
+
+            // Transition out
+            @include translateX(100%);
+            @include transition-timing-function(ease-in);
+        }
+
+        .eventSlider__layer2 {
+            @include opacity(0);
+
+            // Transition out
+            @include translateX(50%);
+            @include transition-timing-function(ease-in);
+        }
+    }
+}
+
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 {
+    .eventSlider__slide1,
+    .eventSlider__slide2 {
+        .eventSlider__layer1 {
+            @include opacity(0);
+
+            // Transition out
+            @include translateX(-50%);
+            @include transition-timing-function(ease-in);
+        }
+
+        .eventSlider__layer2 {
+            @include opacity(0);
+
+            // Transition out
+            @include translateX(-100%);
+            @include transition-timing-function(ease-in);
+        }
+    }
+}
+
+.eventSlider-direction-post-next.eventSlider-event-post-00 {
+    .eventSlider__slide1,
+    .eventSlider__slide2 {
+        .eventSlider__layer1,
+        .eventSlider__layer2 {
+            @include opacity(0);
+
+            @include transition-duration(0s);
+            @include translateX(-50%);
+        }
+
+        .eventSlider__layer2 {
+            @include translateX(-100%);
+        }
+    }
+}
+
+.eventSlider-direction-post-prev.eventSlider-event-post-00 {
+    .eventSlider__slide1,
+    .eventSlider__slide2 {
+        .eventSlider__layer1,
+        .eventSlider__layer2 {
+            @include opacity(0);
+
+            @include transition-duration(0s);
+            @include translateX(100%);
+        }
+
+        .eventSlider__layer2 {
+            @include translateX(50%);
+        }
+    }
+}
+
+.eventSlider__slide1.slider_hidden,
+.eventSlider__slide2.slider_hidden {
+    .eventSlider__layer1 {
+        @include opacity(0);
+    }
+
+    .eventSlider__layer2 {
+        @include opacity(0);
+    }
+}
+
+
+.eventSlider__slide3 {
+    .eventSlider__layer1 {
+        @extend %eventSlider__layer1;
+    }
+
+    .eventSlider__layer2 {
+        @extend %eventSlider__layer2;
+    }
 }
