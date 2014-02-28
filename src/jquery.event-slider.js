@@ -8,6 +8,7 @@
             direction: 'next',
             pager: true,
             firstSlide: 0,
+            renderSingle: false,
             eventsPre: [],
             eventsPost: [],
             functionsPre: [],
@@ -51,50 +52,54 @@
             // Count slides
             this.slideCount = this.setSlideCount();
 
-            // Add class to plugin
-            $self.addClass(pluginName);
+            // If there's more than one slide or the user wants the slider functionality rendering
+            // for one slide then proceed to render it
+            if (this.slideCount > 1 || this.options.renderSingle === true) {
+                // Add class to plugin
+                $self.addClass(pluginName);
 
-            // Set heights of li elements
-            this.setLiH();
+                // Set heights of li elements
+                this.setLiH();
 
-            // Wrap the slider to allow nav to be inserted
-            this.buildWrap();
+                // Wrap the slider to allow nav to be inserted
+                this.buildWrap();
 
-            // Insert the slider nav into the DOM
-            this.buildNav();
+                // Insert the slider nav into the DOM
+                this.buildNav();
 
-            // Insert the pager into the DOM
-            this.buildPager();
+                // Insert the pager into the DOM
+                this.buildPager();
 
-            // Set the current active pager item
-            this.setActivePagerItem(this.options.firstSlide);
+                // Set the current active pager item
+                this.setActivePagerItem(this.options.firstSlide);
 
-            // Detect if the browser supports CSS transforms
-            this.detectCss();
+                // Detect if the browser supports CSS transforms
+                this.detectCss();
 
-            // Bind to window resize event
-            this.resize();
+                // Bind to window resize event
+                this.resize();
 
-            // Bind the hover event
-            this.hoverPauseFn();
+                // Bind the hover event
+                this.hoverPauseFn();
 
-            // Bind the direction click events
-            this.directionClick();
+                // Bind the direction click events
+                this.directionClick();
 
-            // Set opacity to zero to all but the first slide
-            // Direction param set to false so that post events don't fire
-            this.setLiOpacity(0, false);
+                // Set opacity to zero to all but the first slide
+                // Direction param set to false so that post events don't fire
+                this.setLiOpacity(0, false);
 
-            this.getTotalDuration();
+                this.getTotalDuration();
 
-            // All is ready to start, instantiate the onInit function if exists
-            if (this.options.onInit && typeof(this.options.onInit) === 'function') {
-                this.options.onInit();
-            }
+                // All is ready to start, instantiate the onInit function if exists
+                if (this.options.onInit && typeof(this.options.onInit) === 'function') {
+                    this.options.onInit();
+                }
 
-            if (this.options.auto === true) {
-                // Begin auto slideshow
-                this.start();
+                if (this.options.auto === true) {
+                    // Begin auto slideshow
+                    this.start();
+                }
             }
 		},
 

@@ -23,7 +23,18 @@
                     <div class="eventSlider__layer2"></div>
                 </a>
             </li>
-        </ul>
+            <li class="eventSlider__slide1">
+                <a href="#">
+                    <div class="eventSlider__layer1"></div>
+                    <div class="eventSlider__layer2"></div>
+                </a>
+            </li>
+            <li class="eventSlider__slide2">
+                <a href="#">
+                    <div class="eventSlider__layer1"></div>
+                    <div class="eventSlider__layer2"></div>
+                </a>
+            </li>        </ul>
 
 
 		<script>
@@ -60,6 +71,9 @@
                     eventsPost: [[0, 100]],
                     functionsPre:[[]],
                     direction: 'next',
+                    renderSingle: false,
+                    firstSlide: 2,
+                    pager: true,
                     transitionDuration: 0,
                     onPreStart: function() {
                         //goprestart();
