@@ -248,7 +248,7 @@
 
             var $self = $(this.element),
                 selfH = $self.outerHeight();
-            $self.find('li').css('height',selfH + 'px');
+            $self.find('li').css('height', selfH + 'px');
         },
 
 
@@ -445,7 +445,7 @@
 
         },
 
-        transition: function(direction) {
+        transition: function(direction, target) {
             /**
              *  Transition to next slide
              */
@@ -453,24 +453,30 @@
             // Active slide is the only slide without the hidden class
             var activeSlide = $(this.element).find('li:not(".'+ this.hiddenClass +'")').index();
 
-            // Work out the next/prev slide to show
-            if (direction === 'next') {
-                if (activeSlide + 1 >= this.slideCount) {
-                    // Last slide, go back to start
-                    targetIndex = 0;
+            // If no target has been specified go to the adjacent slide according to direction
+            if (!target) {
+                // Work out the next/prev slide to show
+                if (direction === 'next') {
+                    if (activeSlide + 1 >= this.slideCount) {
+                        // Last slide, go back to start
+                        targetIndex = 0;
+                    } else {
+                        // Not last slide, go forward 1
+                        targetIndex = activeSlide + 1;
+                    }
                 } else {
-                    // Not last slide, go forward 1
-                    targetIndex = activeSlide + 1;
+                    // Going to previous slide
+                    if (activeSlide <= 0) {
+                        // At first slide, go to last slide
+                        targetIndex = this.slideCount - 1;
+                    } else {
+                        // Not at first slide, go previous 1
+                        targetIndex = activeSlide - 1;
+                    }
                 }
             } else {
-                // Going to previous slide
-                if (activeSlide <= 0) {
-                    // At first slide, go to last slide
-                    targetIndex = this.slideCount - 1;
-                } else {
-                    // Not at first slide, go previous 1
-                    targetIndex = activeSlide - 1;
-                }
+                // Target has been passed in so use that as target
+                targetIndex = target;
             }
 
             // Make appropriate pager item 'current'
@@ -480,7 +486,7 @@
             this.setLiOpacity(targetIndex, direction);
         },
 
-        advance: function(direction) {
+        advance: function(direction, target) {
             /**
              *  Set up all the event timers
              */
@@ -511,7 +517,7 @@
 
                 if (i === this.options.eventsPre.length - 1) { // Last event
                     // Transition to the next slide at the same moment the last timing event finishes
-                    transitionEvent = setTimeout($.proxy(this.transition, this, direction), this.options.eventsPre[i][1]);
+                    transitionEvent = setTimeout($.proxy(this.transition, this, direction, target), this.options.eventsPre[i][1]);
 
                     // If a function has been passed for the end of this event set a timer for it
                     if (typeof(this.options.functionsPre[i][0]) === 'function' && this.options.functionsPre[i][1].length > 0) {
@@ -571,20 +577,22 @@
                 targetSlide = $(pagerItem).attr('data-index'),
                 direction;
 
+            // Calculate whether to use the next or previous direction
             if (activeSlide >= targetSlide) {
                 direction = 'prev';
             } else {
                 direction = 'next';
             }
 
-            // Make appropriate pager item 'current'
-            this.setActivePagerItem(targetSlide);
-
-            // Go to target slide
-            this.setLiOpacity(targetSlide, direction);
+            // Begin advancing the slider
+            this.advance(direction,targetSlide);
         },
 
         hoverPauseFn: function() {
+            /**
+             *  Controling the user hover events
+             */
+
             var self = this;
             if (this.options.hoverPause === true && this.options.auto === true) {
                 $(this.element).hover(
@@ -623,7 +631,7 @@
                             func.apply(obj, args);
                         }
 
-                        timeout = setTimeout(delayed, threshold || 100);
+                        timeout = setTimeout(delayed, threshold || 30);
                     };
                 };
                 // smartresize
