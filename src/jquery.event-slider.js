@@ -87,7 +87,7 @@
 
                 // Set opacity to zero to all but the first slide
                 // Direction param set to false so that post events don't fire
-                this.setLiOpacity(0, false);
+                this.setLiOpacity(this.options.firstSlide, false);
 
                 this.getTotalDuration();
 
