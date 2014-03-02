@@ -60,28 +60,60 @@
                 }
 
                 function pre1 () {
-                    $('.eventSlider-direction-pre-next').css('border','10px solid red');
-                    $('.eventSlider-direction-pre-next .eventSlider__layer1').animate({
-                            opacity: 0,
+                    if ($('.eventSlider').hasClass('no-transform') || $('.eventSlider').hasClass('no-transition')) {
+                        $('.eventSlider-direction-pre-next .eventSlider__layer1').animate({
+                                opacity: 0,
+                                left: '100%'
+                        }, 400);
+                        $('.eventSlider-direction-pre-next .eventSlider__layer2').animate({
+                                opacity: 0,
+                                left: '50%'
+                        }, 400);
+                        $('.eventSlider-direction-pre-prev .eventSlider__layer1').animate({
+                                opacity: 0,
+                                left: '-50%'
+                        }, 400);
+                        $('.eventSlider-direction-pre-prev .eventSlider__layer2').animate({
+                                opacity: 0,
+                                left: '-100%'
+                        }, 400);
+                    }
+                }
+
+                function post1() {
+                    if ($('.eventSlider').hasClass('no-transform') || $('.eventSlider').hasClass('no-transition')) {
+                        $('.eventSlider-direction-post-next .eventSlider__layer1').css({
+                            left: '-50%'
+                        });
+                        $('.eventSlider-direction-post-next .eventSlider__layer2').css({
+                            left: '-100%'
+                        });
+                        $('.eventSlider-direction-post-prev .eventSlider__layer1').css({
                             left: '100%'
-                    }, 400);
-                    $('.eventSlider-direction-pre-next .eventSlider__layer2').animate({
-                            opacity: 0,
+                        });
+                        $('.eventSlider-direction-post-prev .eventSlider__layer2').css({
                             left: '50%'
-                    }, 400);
-                    /*$('.eventSlider__layer1').css({
-                            border: '10px solid green'
-                    });*/
+                        });
+                    }
+                }
+
+                function postEnd() {
+                    if ($('.eventSlider').hasClass('no-transform') || $('.eventSlider').hasClass('no-transition')) {
+                        $('.eventSlider__layer1, .eventSlider__layer2').animate({
+                            left: '0%',
+                            opacity: 1
+                        }, 400);
+                    }
                 }
 
 				var mySlider = $('.eventSlider').eventSlider({
                     hoverPause: true,
-                    auto: true,
+                    auto: false,
                     delay: 3000,
                     eventsPre: [[0, 500]],
                     eventsPost: [[0, 100]],
-                    functionsPre:[[]],
-                    functionsPost:[[]],
+                    functionsPre:[[pre1]],
+                    functionsPost:[[post1, postEnd]],
                     direction: 'next',
                     renderSingle: false,
                     firstSlide: 0,
