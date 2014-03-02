@@ -20,6 +20,7 @@
             eventsPre: [],
             eventsPost: [],
             functionsPre: [],
+            functionsPost: [],
             transitionDuration: 0,
             onInit: function(){},
             onPreStart: function(){},
@@ -430,8 +431,20 @@
             for (i = 0; i < this.options.eventsPost.length; i++) {
                 // The start of the event
                 this.timingsTimeoutPost[count] = setTimeout($.proxy(this.addEventClass, this, i, direction, 'post'), this.options.eventsPost[i][0]);
+
+                // If a function has been passed for the start of this event set a timer for it
+                if (this.options.functionsPost[i] && this.options.functionsPost[i][0] !== 'undefined' && typeof(this.options.functionsPost[i][0]) === 'function') {
+                    this.options.functionsPost[i][0]();
+                }
+
                 // The end of the event
                 this.timingsTimeoutPost[count + 1] = setTimeout($.proxy(this.removeEventClass, this, i, 'post'), this.options.eventsPost[i][1]);
+
+                // If a function has been passed for the end of this event set a timer for it
+                if (this.options.functionsPost[i] && this.options.functionsPost[i][1] !== 'undefined' && typeof(this.options.functionsPost[i][1]) === 'function') {
+                    this.options.functionsPost[i][1]();
+                }
+
                 // Increment by two as each array has two values
                 count += 2;
 
