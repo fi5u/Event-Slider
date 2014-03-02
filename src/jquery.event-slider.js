@@ -23,7 +23,7 @@
 
 	function Plugin ( element, options ) {
         /**
-         *  The plugin constructor
+         *  The plugin constructor.
          */
 
 		this.element = element;
