@@ -498,23 +498,24 @@
                 this.timingsTimeoutPre[count] = setTimeout($.proxy(this.addEventClass, this, i, direction, 'pre'), this.options.eventsPre[i][0]);
 
                 // If a function has been passed for the start of this event set a timer for it
-                if (typeof(this.options.functionsPre[i][0]) === 'function' && this.options.functionsPre[i][0].length > 0) {
+                if (this.options.functionsPre[i] && this.options.functionsPre[i][0] !== 'undefined' && typeof(this.options.functionsPre[i][0]) === 'function') {
                     this.options.functionsPre[i][0]();
                 }
 
                 // The end of the event
                 this.timingsTimeoutPre[count + 1] = setTimeout($.proxy(this.removeEventClass, this, i, 'pre'), this.options.eventsPre[i][1]);
+
+                // If a function has been passed for the end of this event set a timer for it
+                if (this.options.functionsPre[i] && this.options.functionsPre[i][1] !== 'undefined' && typeof(this.options.functionsPre[i][1]) === 'function') {
+                    this.options.functionsPre[i][1]();
+                }
+
                 // Increment by two as each array has two values
                 count += 2;
 
                 if (i === this.options.eventsPre.length - 1) { // Last event
                     // Transition to the next slide at the same moment the last timing event finishes
                     transitionEvent = setTimeout($.proxy(this.transition, this, direction, target), this.options.eventsPre[i][1]);
-
-                    // If a function has been passed for the end of this event set a timer for it
-                    if (typeof(this.options.functionsPre[i][0]) === 'function' && this.options.functionsPre[i][1].length > 0) {
-                        this.options.functionsPre[i][1]();
-                    }
 
                     // If onPreEnd function added, call it at the end of the last pre event
                     if( this.options.onPreEnd && typeof(this.options.onPreEnd) === 'function' ) {
