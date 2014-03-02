@@ -37,7 +37,7 @@ body {
     width: 100%;
     height: 100%;
 
-    @include opacity(1);
+/*     @include opacity(1);
 
     @include translateX(0%);
 
@@ -45,7 +45,7 @@ body {
     @include transition-property(all);
     @include transition-duration(0.4s);
     @include transition-timing-function(ease-out);
-}
+ */}
 
 %eventSlider__layer1 {
     @extend %eventSlider__layer;
@@ -83,7 +83,7 @@ body {
     }
 }
 
-.eventSlider-direction-pre-next.eventSlider-event-pre-00 {
+/* .eventSlider-direction-pre-next.eventSlider-event-pre-00 {
     .eventSlider__slide1,
     .eventSlider__slide2 {
         .eventSlider__layer1 {
@@ -181,4 +181,4 @@ body {
     .eventSlider__layer2 {
         @extend %eventSlider__layer2;
     }
-}
+} */

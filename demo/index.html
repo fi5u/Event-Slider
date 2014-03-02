@@ -59,8 +59,19 @@
                     alert('post end');
                 }
 
-                function infunc (param) {
-                    alert('in func ' + param);
+                function pre1 () {
+                    $('.eventSlider-direction-pre-next').css('border','10px solid red');
+                    $('.eventSlider-direction-pre-next .eventSlider__layer1').animate({
+                            opacity: 0,
+                            left: '100%'
+                    }, 400);
+                    $('.eventSlider-direction-pre-next .eventSlider__layer2').animate({
+                            opacity: 0,
+                            left: '50%'
+                    }, 400);
+                    /*$('.eventSlider__layer1').css({
+                            border: '10px solid green'
+                    });*/
                 }
 
 				var mySlider = $('.eventSlider').eventSlider({

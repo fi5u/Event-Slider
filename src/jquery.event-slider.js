@@ -42,6 +42,8 @@
         timings: [],
         timingsTimeoutPre: [],
         timingsTimeoutPost: [],
+        timingsFunctionsPre: [],
+        timingsFunctionsPost: [],
 
 		init: function () {
             /**
@@ -426,7 +428,7 @@
 
                 // If a function has been passed for the start of this event set a timer for it
                 if (this.options.functionsPost[i] && this.options.functionsPost[i][0] !== 'undefined' && typeof(this.options.functionsPost[i][0]) === 'function') {
-                    this.options.functionsPost[i][0]();
+                    this.timingsFunctionsPost[count] = setTimeout($.proxy(this.options.functionsPost[i][0], this), this.options.eventsPost[i][0]);
                 }
 
                 // The end of the event
@@ -434,7 +436,7 @@
 
                 // If a function has been passed for the end of this event set a timer for it
                 if (this.options.functionsPost[i] && this.options.functionsPost[i][1] !== 'undefined' && typeof(this.options.functionsPost[i][1]) === 'function') {
-                    this.options.functionsPost[i][1]();
+                    this.timingsFunctionsPost[count + 1] = setTimeout($.proxy(this.options.functionsPost[i][1], this), this.options.eventsPost[i][1]);
                 }
 
                 // Increment by two as each array has two values
@@ -512,7 +514,7 @@
 
                 // If a function has been passed for the start of this event set a timer for it
                 if (this.options.functionsPre[i] && this.options.functionsPre[i][0] !== 'undefined' && typeof(this.options.functionsPre[i][0]) === 'function') {
-                    this.options.functionsPre[i][0]();
+                    this.timingsFunctionsPre[count] = setTimeout($.proxy(this.options.functionsPre[i][0], this), this.options.eventsPre[i][0]);
                 }
 
                 // The end of the event
@@ -520,7 +522,7 @@
 
                 // If a function has been passed for the end of this event set a timer for it
                 if (this.options.functionsPre[i] && this.options.functionsPre[i][1] !== 'undefined' && typeof(this.options.functionsPre[i][1]) === 'function') {
-                    this.options.functionsPre[i][1]();
+                    this.timingsFunctionsPre[count + 1] = setTimeout($.proxy(this.options.functionsPre[i][1], this), this.options.eventsPre[i][1]);
                 }
 
                 // Increment by two as each array has two values
