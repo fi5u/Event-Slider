@@ -309,10 +309,10 @@
             var eventNum = this.padNumber(i, 2);
 
             // Remove event class
-            $(this.element).removeClass(pluginName + '-event-' + locus + '-' + eventNum);
+            $(this.element).removeClass(pluginName + '-' + locus + '-' + eventNum);
 
             // Remove direction class
-            $(this.element).removeClass(pluginName + '-direction-' + locus + '-next ' + pluginName + '-direction-' + locus + '-prev');
+            $(this.element).removeClass(pluginName + '-' + locus + '-next ' + pluginName + '-' + locus + '-prev');
         },
 
         addEventClass: function(i, direction, locus) {
@@ -323,10 +323,10 @@
             var eventNum = this.padNumber(i, 2);
 
             // Add new event class
-            $(this.element).addClass(pluginName + '-event-' + locus + '-' + eventNum);
+            $(this.element).addClass(pluginName + '-' + locus + '-' + eventNum);
 
             // Add new direction class
-            $(this.element).addClass(pluginName + '-direction-' + locus + '-' + direction);
+            $(this.element).addClass(pluginName + '-' + locus + '-' + direction);
         },
 
         setActivePagerItem: function(index) {
