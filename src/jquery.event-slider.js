@@ -566,7 +566,8 @@
             var self = this;
 
             $('body').on('click', '.eventSlider-left', function(event) {
-                self.prev();
+                var selfEl = $(this).parent('.' + pluginName + '-navbar').prev('ul');
+                selfEl.prev();
                 event.preventDefault();
             });
 
