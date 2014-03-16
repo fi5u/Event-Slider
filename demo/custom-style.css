@@ -1,6 +1,6 @@
 /* line 12, custom-style.scss */
 body {
-  max-width: 1170px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -26,7 +26,19 @@ body {
 }
 
 /* line 33, custom-style.scss */
-.eventSlider__slide1 .eventSlider__layer1, .eventSlider__slide2 .eventSlider__layer1, .eventSlider__slide3 .eventSlider__layer1, .eventSlider__slide1 .eventSlider__layer2, .eventSlider__slide2 .eventSlider__layer2, .eventSlider__slide3 .eventSlider__layer2 {
+.eventSlider__slide1 .eventSlider__layer1,
+.eventSlider__slide1 .eventSlider__layerA,
+.eventSlider__slideA .eventSlider__layer1,
+.eventSlider__slideA .eventSlider__layerA, .eventSlider__slide2 .eventSlider__layer1,
+.eventSlider__slide2 .eventSlider__layerA,
+.eventSlider__slideB .eventSlider__layer1,
+.eventSlider__slideB .eventSlider__layerA, .eventSlider__slide3 .eventSlider__layer1, .eventSlider__slide1 .eventSlider__layer2,
+.eventSlider__slide1 .eventSlider__layerB,
+.eventSlider__slideA .eventSlider__layer2,
+.eventSlider__slideA .eventSlider__layerB, .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider__slide2 .eventSlider__layerB,
+.eventSlider__slideB .eventSlider__layer2,
+.eventSlider__slideB .eventSlider__layerB, .eventSlider__slide3 .eventSlider__layer2 {
   position: absolute;
   top: 0;
   left: 0;
@@ -57,7 +69,13 @@ body {
 }
 
 /* line 50, custom-style.scss */
-.eventSlider__slide1 .eventSlider__layer1, .eventSlider__slide2 .eventSlider__layer1, .eventSlider__slide3 .eventSlider__layer1 {
+.eventSlider__slide1 .eventSlider__layer1,
+.eventSlider__slide1 .eventSlider__layerA,
+.eventSlider__slideA .eventSlider__layer1,
+.eventSlider__slideA .eventSlider__layerA, .eventSlider__slide2 .eventSlider__layer1,
+.eventSlider__slide2 .eventSlider__layerA,
+.eventSlider__slideB .eventSlider__layer1,
+.eventSlider__slideB .eventSlider__layerA, .eventSlider__slide3 .eventSlider__layer1 {
   background: transparent;
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
   /* IE8 */
@@ -67,7 +85,13 @@ body {
 }
 
 /* line 59, custom-style.scss */
-.eventSlider__slide1 .eventSlider__layer2, .eventSlider__slide2 .eventSlider__layer2, .eventSlider__slide3 .eventSlider__layer2 {
+.eventSlider__slide1 .eventSlider__layer2,
+.eventSlider__slide1 .eventSlider__layerB,
+.eventSlider__slideA .eventSlider__layer2,
+.eventSlider__slideA .eventSlider__layerB, .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider__slide2 .eventSlider__layerB,
+.eventSlider__slideB .eventSlider__layer2,
+.eventSlider__slideB .eventSlider__layerB, .eventSlider__slide3 .eventSlider__layer2 {
   background: transparent;
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
   /* IE8 */
@@ -76,31 +100,45 @@ body {
   zoom: 1;
 }
 
-/* line 69, custom-style.scss */
-.eventSlider__slide1 .eventSlider__layer1 {
+/* line 71, custom-style.scss */
+.eventSlider__slide1 .eventSlider__layer1,
+.eventSlider__slide1 .eventSlider__layerA,
+.eventSlider__slideA .eventSlider__layer1,
+.eventSlider__slideA .eventSlider__layerA {
   background: url(../demo/slide1_layer1.png) no-repeat center center;
   background-size: contain;
 }
-/* line 75, custom-style.scss */
-.eventSlider__slide1 .eventSlider__layer2 {
+/* line 78, custom-style.scss */
+.eventSlider__slide1 .eventSlider__layer2,
+.eventSlider__slide1 .eventSlider__layerB,
+.eventSlider__slideA .eventSlider__layer2,
+.eventSlider__slideA .eventSlider__layerB {
   background: url(../demo/slide1_layer2.png) no-repeat center center;
   background-size: contain;
 }
 
-/* line 83, custom-style.scss */
-.eventSlider__slide2 .eventSlider__layer1 {
+/* line 88, custom-style.scss */
+.eventSlider__slide2 .eventSlider__layer1,
+.eventSlider__slide2 .eventSlider__layerA,
+.eventSlider__slideB .eventSlider__layer1,
+.eventSlider__slideB .eventSlider__layerA {
   background: url(../demo/slide2_layer1.png) no-repeat center center;
   background-size: contain;
 }
-/* line 89, custom-style.scss */
-.eventSlider__slide2 .eventSlider__layer2 {
+/* line 95, custom-style.scss */
+.eventSlider__slide2 .eventSlider__layer2,
+.eventSlider__slide2 .eventSlider__layerB,
+.eventSlider__slideB .eventSlider__layer2,
+.eventSlider__slideB .eventSlider__layerB {
   background: url(../demo/slide2_layer2.png) no-repeat center center;
   background-size: contain;
 }
 
-/* line 99, custom-style.scss */
+/* line 107, custom-style.scss */
 .eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide1 .eventSlider__layer1,
-.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer1 {
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer1,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slideA .eventSlider__layer1,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slideB .eventSlider__layer1 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -116,9 +154,15 @@ body {
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
-/* line 107, custom-style.scss */
+/* line 116, custom-style.scss */
 .eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide1 .eventSlider__layer2,
-.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer2 {
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide1 .eventSlider__layerB,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layerB,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slideA .eventSlider__layer2,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slideA .eventSlider__layerB,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slideB .eventSlider__layer2,
+.eventSlider-direction-pre-next.eventSlider-event-pre-00 .eventSlider__slideB .eventSlider__layerB {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -135,9 +179,11 @@ body {
   transition-timing-function: ease-in;
 }
 
-/* line 120, custom-style.scss */
+/* line 131, custom-style.scss */
 .eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide1 .eventSlider__layer1,
-.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer1 {
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer1,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slideA .eventSlider__layer1,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slideB .eventSlider__layer1 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -153,9 +199,15 @@ body {
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
-/* line 128, custom-style.scss */
+/* line 140, custom-style.scss */
 .eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide1 .eventSlider__layer2,
-.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer2 {
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide1 .eventSlider__layerB,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slide2 .eventSlider__layerB,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slideA .eventSlider__layer2,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slideA .eventSlider__layerB,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slideB .eventSlider__layer2,
+.eventSlider-direction-pre-prev.eventSlider-event-pre-00 .eventSlider__slideB .eventSlider__layerB {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -172,11 +224,23 @@ body {
   transition-timing-function: ease-in;
 }
 
-/* line 143, custom-style.scss */
+/* line 159, custom-style.scss */
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer1,
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layerA,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layerB,
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer1,
-.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2 {
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layerA,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layerB,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layer1,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layerA,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layerB,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layer1,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layerA,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layerB {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -192,9 +256,15 @@ body {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-/* line 150, custom-style.scss */
+/* line 167, custom-style.scss */
 .eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
-.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2 {
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layerB,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layerB,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layerB,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layer2,
+.eventSlider-direction-post-next.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layerB {
   -webkit-transform: translateX(-100%);
   -moz-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
@@ -202,11 +272,23 @@ body {
   transform: translateX(-100%);
 }
 
-/* line 161, custom-style.scss */
+/* line 182, custom-style.scss */
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer1,
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layerA,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layerB,
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer1,
-.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2 {
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layerA,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layerB,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layer1,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layerA,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layerB,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layer1,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layerA,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layerB {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -222,9 +304,15 @@ body {
   -o-transform: translateX(100%);
   transform: translateX(100%);
 }
-/* line 168, custom-style.scss */
+/* line 190, custom-style.scss */
 .eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layer2,
-.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2 {
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide1 .eventSlider__layerB,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slide2 .eventSlider__layerB,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideA .eventSlider__layerB,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layer2,
+.eventSlider-direction-post-prev.eventSlider-event-post-00 .eventSlider__slideB .eventSlider__layerB {
   -webkit-transform: translateX(50%);
   -moz-transform: translateX(50%);
   -ms-transform: translateX(50%);
@@ -232,18 +320,30 @@ body {
   transform: translateX(50%);
 }
 
-/* line 176, custom-style.scss */
+/* line 201, custom-style.scss */
 .eventSlider__slide1.slider_hidden .eventSlider__layer1,
-.eventSlider__slide2.slider_hidden .eventSlider__layer1 {
+.eventSlider__slide1.slider_hidden .eventSlider__layerA,
+.eventSlider__slide2.slider_hidden .eventSlider__layer1,
+.eventSlider__slide2.slider_hidden .eventSlider__layerA,
+.eventSlider__slideA.slider_hidden .eventSlider__layer1,
+.eventSlider__slideA.slider_hidden .eventSlider__layerA,
+.eventSlider__slideB.slider_hidden .eventSlider__layer1,
+.eventSlider__slideB.slider_hidden .eventSlider__layerA {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
   -khtml-opacity: 0;
   opacity: 0;
 }
-/* line 180, custom-style.scss */
+/* line 206, custom-style.scss */
 .eventSlider__slide1.slider_hidden .eventSlider__layer2,
-.eventSlider__slide2.slider_hidden .eventSlider__layer2 {
+.eventSlider__slide1.slider_hidden .eventSlider__layerB,
+.eventSlider__slide2.slider_hidden .eventSlider__layer2,
+.eventSlider__slide2.slider_hidden .eventSlider__layerB,
+.eventSlider__slideA.slider_hidden .eventSlider__layer2,
+.eventSlider__slideA.slider_hidden .eventSlider__layerB,
+.eventSlider__slideB.slider_hidden .eventSlider__layer2,
+.eventSlider__slideB.slider_hidden .eventSlider__layerB {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;

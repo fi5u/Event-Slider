@@ -10,6 +10,7 @@
             nav: true,
             firstSlide: 0,
             renderSingle: false,
+            detectCss: true,
             eventsPre: [],
             eventsPost: [],
             functionsPre: [],
@@ -75,7 +76,7 @@
                 this.buildPager();
 
                 // Set the current active pager item
-                this.setActivePagerItem(this.options.firstSlide);
+                this.setActivePagerItem(this.options.firstSlide, $self.nextAll('.' + pluginName + '-pager'));
 
                 // Detect if the browser supports CSS transforms
                 this.detectCss();
@@ -85,9 +86,6 @@
 
                 // Bind the hover event
                 this.hoverPauseFn();
-
-                // Bind the direction click events
-                this.directionClick();
 
                 // Set opacity to zero to all but the first slide
                 // Direction param set to false so that post events don't fire
@@ -197,46 +195,6 @@
 
             // Add the HTML to the DOM
             this.slider.pagerEl.html(pagerItems);
-        },
-
-        detectCss: function() {
-            /**
-             *  If browser doesn't support transform add class to slider
-             */
-
-            function detectCSSFeature(featurename){
-                var feature = false,
-                    domPrefixes = 'Webkit Moz ms O'.split(' '),
-                    elm = document.createElement('div'),
-                    featurenameCapital = null,
-                    i;
-
-                featurename = featurename.toLowerCase();
-
-                if( elm.style[featurename] ) { feature = true; }
-
-                if( feature === false ) {
-                    featurenameCapital = featurename.charAt(0).toUpperCase() + featurename.substr(1);
-                    for( i = 0; i < domPrefixes.length; i++ ) {
-                        if( elm.style[domPrefixes[i] + featurenameCapital ] !== undefined ) {
-                          feature = true;
-                          break;
-                        }
-                    }
-                }
-                return feature;
-            }
-
-            var hasCssTransformSupport = detectCSSFeature('transform'),
-                hasCssTransitionSupport = detectCSSFeature('transition');
-
-            if (!hasCssTransformSupport) {
-                $(this.element).addClass(pluginName + '-no-transform');
-            }
-
-            if (!hasCssTransitionSupport) {
-                $(this.element).addClass(pluginName + '-no-transition');
-            }
         },
 
 
@@ -352,7 +310,7 @@
             $(this.element).addClass(pluginName + '-' + locus + '-' + direction);
         },
 
-        setActivePagerItem: function(index) {
+        setActivePagerItem: function(index, self) {
             /**
              *  Remove current instance of active pager item and add class 'active' to the pager item at index
              */
@@ -360,14 +318,56 @@
             // If the user wants a pager continue
             if (this.options.pager) {
                 // Remove current instance of 'active' from pager item
-                $(this.slider.pagerEl).find('a.active').removeClass('active');
+                $(self).find('a.active').removeClass('active');
 
                 // Add the class of 'active' to the pager item at index
-                $(this.slider.pagerEl).find('a').eq(index).addClass('active');
-
+                $(self).find('a').eq(index).addClass('active');
             }
         },
 
+        detectCss: function() {
+            /**
+             *  If browser doesn't support transform and/or transition, add class to slider
+             */
+
+            function detectCSSFeature(featurename){
+                var feature = false,
+                    domPrefixes = 'Webkit Moz ms O'.split(' '),
+                    elm = document.createElement('div'),
+                    featurenameCapital = null,
+                    i;
+
+                featurename = featurename.toLowerCase();
+
+                if( elm.style[featurename] ) { feature = true; }
+
+                if( feature === false ) {
+                    featurenameCapital = featurename.charAt(0).toUpperCase() + featurename.substr(1);
+                    for( i = 0; i < domPrefixes.length; i++ ) {
+                        if( elm.style[domPrefixes[i] + featurenameCapital ] !== undefined ) {
+                          feature = true;
+                          break;
+                        }
+                    }
+                }
+                return feature;
+            }
+
+            // Check if the user wants to detect CSS features
+            if (this.options.detectCss) {
+
+                var hasCssTransformSupport = detectCSSFeature('transform'),
+                    hasCssTransitionSupport = detectCSSFeature('transition');
+
+                if (!hasCssTransformSupport) {
+                    $(this.element).addClass(pluginName + '-no-transform');
+                }
+
+                if (!hasCssTransitionSupport) {
+                    $(this.element).addClass(pluginName + '-no-transition');
+                }
+            }
+        },
 
 
         /**
@@ -475,7 +475,7 @@
 
         },
 
-        transition: function(direction, target) {
+        transition: function(direction, target, pager) {
             /**
              *  Transition to next slide
              */
@@ -510,13 +510,13 @@
             }
 
             // Make appropriate pager item 'current'
-            this.setActivePagerItem(targetIndex);
+            this.setActivePagerItem(targetIndex, pager);
 
             // Change the transparency of target slide
             this.setLiOpacity(targetIndex, direction);
         },
 
-        advance: function(direction, target) {
+        advance: function(direction, target, pager) {
             /**
              *  Set up all the event timers
              */
@@ -553,7 +553,7 @@
 
                 if (i === this.options.eventsPre.length - 1) { // Last event
                     // Transition to the next slide at the same moment the last timing event finishes
-                    transitionEvent = setTimeout($.proxy(this.transition, this, direction, target), this.options.eventsPre[i][1]);
+                    transitionEvent = setTimeout($.proxy(this.transition, this, direction, target, pager), this.options.eventsPre[i][1]);
 
                     // If onPreEnd function added, call it at the end of the last pre event
                     if( this.options.onPreEnd && typeof(this.options.onPreEnd) === 'function' ) {
@@ -585,30 +585,23 @@
          *  EVENTS
          */
 
-        directionClick: function() {
-            var self = this;
-
-            $('body').on('click', '.eventSlider-left', function(event) {
-                var selfEl = $(this).parent('.' + pluginName + '-navbar').prev('ul');
-                selfEl.prev();
-                event.preventDefault();
-            });
-
-            $('body').on('click', '.eventSlider-right', function(event) {
-                self.next();
-                event.preventDefault();
-            });
-        },
-
         navClick: function(nav, navItem) {
             /**
              *  Slider nav click events
              */
+
             var classArr = $(navItem).attr('class').split('-'),
-                direction = classArr[classArr.length - 1];
+                direction = classArr[classArr.length - 1],
+                selfEl = $(nav).prev('ul');
+                pagerEl = null;
+
+            // If the user wants a pager, set the pagerEl variable to be passed to advance()
+            if (this.options.pager) {
+                pagerEl = selfEl.nextAll('.' + pluginName + '-pager');
+            }
 
             // Begin advancing the slider
-            this.advance(direction);
+            selfEl.data('plugin_' + pluginName).advance(direction, null, pagerEl);
         },
 
         pagerClick: function(pager, pagerItem) {
@@ -628,7 +621,7 @@
             }
 
             // Begin advancing the slider
-            this.advance(direction,targetSlide);
+            this.advance(direction, targetSlide, pager);
         },
 
         hoverPauseFn: function() {

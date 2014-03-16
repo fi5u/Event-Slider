@@ -34,7 +34,23 @@
                     <div class="eventSlider__layer1"><h1>4</h1></div>
                     <div class="eventSlider__layer2"></div>
                 </a>
-            </li>        </ul>
+            </li>
+        </ul>
+
+        <ul class="eventSlider2">
+            <li class="eventSlider__slideA">
+                <a href="#">
+                    <div class="eventSlider__layerA"><h1>1</h1></div>
+                    <div class="eventSlider__layerB"></div>
+                </a>
+            </li>
+            <li class="eventSlider__slideB">
+                <a href="#">
+                    <div class="eventSlider__layerA"><h1>2</h1></div>
+                    <div class="eventSlider__layerB"></div>
+                </a>
+            </li>
+        </ul>
 
 
 		<script>
@@ -118,6 +134,7 @@
                     renderSingle: false,
                     firstSlide: 0,
                     pager: true,
+                    nav: true,
                     transitionDuration: 0,
                     onPreStart: function() {
                         //goprestart();
@@ -132,6 +149,34 @@
                         //gopostend();
                     }
 				});
+
+                var myNewSlider = $('.eventSlider2').eventSlider({
+                    hoverPause: true,
+                    auto: false,
+                    delay: 3000,
+                    eventsPre: [[0, 500]],
+                    eventsPost: [[0, 100]],
+                    functionsPre:[[pre1]],
+                    functionsPost:[[post1, postEnd]],
+                    direction: 'next',
+                    renderSingle: false,
+                    firstSlide: 0,
+                    pager: false,
+                    nav: false,
+                    transitionDuration: 0,
+                    onPreStart: function() {
+                        //goprestart();
+                    },
+                    onPreEnd: function() {
+                        //gopreend();
+                    },
+                    onPostStart: function() {
+                        //gopoststart();
+                    },
+                    onPostEnd: function() {
+                        //gopostend();
+                    }
+                });
 
                 //mySlider.eventSlider('testfunc');
 			});

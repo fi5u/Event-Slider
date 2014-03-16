@@ -10,7 +10,7 @@
 }
 
 body {
-    max-width: 1170px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -65,28 +65,34 @@ body {
     zoom: 1;
 }
 
-.eventSlider__slide1 {
-    .eventSlider__layer1 {
+.eventSlider__slide1,
+.eventSlider__slideA {
+    .eventSlider__layer1,
+    .eventSlider__layerA {
         @extend %eventSlider__layer1;
         background: url(../demo/slide1_layer1.png) no-repeat center center;
         background-size: contain;
     }
 
-    .eventSlider__layer2 {
+    .eventSlider__layer2,
+    .eventSlider__layerB {
         @extend %eventSlider__layer2;
         background: url(../demo/slide1_layer2.png) no-repeat center center;
         background-size: contain;
     }
 }
 
-.eventSlider__slide2 {
-    .eventSlider__layer1 {
+.eventSlider__slide2,
+.eventSlider__slideB {
+    .eventSlider__layer1,
+    .eventSlider__layerA {
         @extend %eventSlider__layer1;
         background: url(../demo/slide2_layer1.png) no-repeat center center;
         background-size: contain;
     }
 
-    .eventSlider__layer2 {
+    .eventSlider__layer2,
+    .eventSlider__layerB {
         @extend %eventSlider__layer2;
         background: url(../demo/slide2_layer2.png) no-repeat center center;
         background-size: contain;
@@ -95,7 +101,9 @@ body {
 
 .eventSlider-direction-pre-next.eventSlider-event-pre-00 {
     .eventSlider__slide1,
-    .eventSlider__slide2 {
+    .eventSlider__slide2,
+    .eventSlider__slideA,
+    .eventSlider__slideB {
         .eventSlider__layer1 {
             @include opacity(0);
 
@@ -104,7 +112,8 @@ body {
             @include transition-timing-function(ease-in);
         }
 
-        .eventSlider__layer2 {
+        .eventSlider__layer2,
+        .eventSlider__layerB {
             @include opacity(0);
 
             // Transition out
@@ -116,7 +125,9 @@ body {
 
 .eventSlider-direction-pre-prev.eventSlider-event-pre-00 {
     .eventSlider__slide1,
-    .eventSlider__slide2 {
+    .eventSlider__slide2,
+    .eventSlider__slideA,
+    .eventSlider__slideB {
         .eventSlider__layer1 {
             @include opacity(0);
 
@@ -125,7 +136,8 @@ body {
             @include transition-timing-function(ease-in);
         }
 
-        .eventSlider__layer2 {
+        .eventSlider__layer2,
+        .eventSlider__layerB {
             @include opacity(0);
 
             // Transition out
@@ -137,17 +149,22 @@ body {
 
 .eventSlider-direction-post-next.eventSlider-event-post-00 {
     .eventSlider__slide1,
-    .eventSlider__slide2 {
+    .eventSlider__slide2,
+    .eventSlider__slideA,
+    .eventSlider__slideB {
 
         .eventSlider__layer1,
-        .eventSlider__layer2 {
+        .eventSlider__layer2,
+        .eventSlider__layerA,
+        .eventSlider__layerB {
             @include opacity(0);
 
             @include transition-duration(0.05s);
             @include translateX(-50%);
         }
 
-        .eventSlider__layer2 {
+        .eventSlider__layer2,
+        .eventSlider__layerB {
             @include translateX(-100%);
         }
     }
@@ -155,29 +172,38 @@ body {
 
 .eventSlider-direction-post-prev.eventSlider-event-post-00 {
     .eventSlider__slide1,
-    .eventSlider__slide2 {
+    .eventSlider__slide2,
+    .eventSlider__slideA,
+    .eventSlider__slideB {
 
         .eventSlider__layer1,
-        .eventSlider__layer2 {
+        .eventSlider__layer2,
+        .eventSlider__layerA,
+        .eventSlider__layerB {
             @include opacity(0);
 
             @include transition-duration(0.05s);
             @include translateX(100%);
         }
 
-        .eventSlider__layer2 {
+        .eventSlider__layer2,
+        .eventSlider__layerB {
             @include translateX(50%);
         }
     }
 }
 
 .eventSlider__slide1.slider_hidden,
-.eventSlider__slide2.slider_hidden {
-    .eventSlider__layer1 {
+.eventSlider__slide2.slider_hidden,
+.eventSlider__slideA.slider_hidden,
+.eventSlider__slideB.slider_hidden {
+    .eventSlider__layer1,
+    .eventSlider__layerA {
         @include opacity(0);
     }
 
-    .eventSlider__layer2 {
+    .eventSlider__layer2,
+    .eventSlider__layerB {
         @include opacity(0);
     }
 }
