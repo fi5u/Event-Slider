@@ -15,6 +15,7 @@
             hoverPause: false,
             direction: 'next',
             pager: true,
+            nav: true,
             firstSlide: 0,
             renderSingle: false,
             eventsPre: [],
@@ -31,7 +32,7 @@
 
 	function Plugin ( element, options ) {
         /**
-         *  The plugin constructor
+         *  The plugin constructor.
          */
 
 		this.element = element;
@@ -133,7 +134,29 @@
              *  Inject the nav element into the DOM
              */
 
-            $(this.element).closest('.' + pluginName + '-wrap').append('<div class="' + pluginName + '-navbar"><div class="'+pluginName+'-left"></div><div class="'+pluginName+'-right"></div>');
+            //$(this.element).closest('.' + pluginName + '-wrap').append('<div class="' + pluginName + '-navbar"><div class="'+pluginName+'-left"></div><div class="'+pluginName+'-right"></div>');
+
+            var selfNavEl,
+
+                // Set self so that 'this' can be accessed from delegate
+                self = this;
+
+            // If nav is required, go ahead and build it
+            if (this.options.nav) {
+
+                // Set the HTML for the nav element
+                this.slider.navEl = $('<div class="' + pluginName + '-nav"><div class="'+pluginName+'-dir-prev"></div><div class="'+pluginName+'-dir-next"></div></div>');
+
+                // Add the nav element to the DOM
+                $(this.element).closest('.' + pluginName + '-wrap').append(this.slider.navEl);
+
+                selfNavEl = this.slider.navEl;
+
+                // Assign the nav click binding
+                this.slider.navEl.delegate('div[class^="'+pluginName+'-dir-"]', 'click', function() {
+                    self.navClick(selfNavEl, this);
+                });
+            }
         },
 
         buildPager: function() {
@@ -317,10 +340,10 @@
             var eventNum = this.padNumber(i, 2);
 
             // Remove event class
-            $(this.element).removeClass(pluginName + '-event-' + locus + '-' + eventNum);
+            $(this.element).removeClass(pluginName + '-' + locus + '-' + eventNum);
 
             // Remove direction class
-            $(this.element).removeClass(pluginName + '-direction-' + locus + '-next ' + pluginName + '-direction-' + locus + '-prev');
+            $(this.element).removeClass(pluginName + '-' + locus + '-next ' + pluginName + '-' + locus + '-prev');
         },
 
         addEventClass: function(i, direction, locus) {
@@ -331,10 +354,10 @@
             var eventNum = this.padNumber(i, 2);
 
             // Add new event class
-            $(this.element).addClass(pluginName + '-event-' + locus + '-' + eventNum);
+            $(this.element).addClass(pluginName + '-' + locus + '-' + eventNum);
 
             // Add new direction class
-            $(this.element).addClass(pluginName + '-direction-' + locus + '-' + direction);
+            $(this.element).addClass(pluginName + '-' + locus + '-' + direction);
         },
 
         setActivePagerItem: function(index) {
@@ -574,7 +597,8 @@
             var self = this;
 
             $('body').on('click', '.eventSlider-left', function(event) {
-                self.prev();
+                var selfEl = $(this).parent('.' + pluginName + '-navbar').prev('ul');
+                selfEl.prev();
                 event.preventDefault();
             });
 
@@ -582,6 +606,17 @@
                 self.next();
                 event.preventDefault();
             });
+        },
+
+        navClick: function(nav, navItem) {
+            /**
+             *  Slider nav click events
+             */
+            var classArr = $(navItem).attr('class').split('-'),
+                direction = classArr[classArr.length - 1];
+
+            // Begin advancing the slider
+            this.advance(direction);
         },
 
         pagerClick: function(pager, pagerItem) {

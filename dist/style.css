@@ -19,7 +19,7 @@
     height: 100%; }
 
 /* line 23, ../src/scss/style.scss */
-.eventSlider-navbar {
+.eventSlider-nav {
   position: absolute;
   top: 50%;
   left: 0;
@@ -27,7 +27,7 @@
   margin-top: -30px; }
 
 /* line 31, ../src/scss/style.scss */
-.eventSlider-left, .eventSlider-right {
+.eventSlider-dir-prev, .eventSlider-dir-next {
   position: absolute;
   display: block;
   width: 60px;
@@ -41,24 +41,24 @@
   cursor: pointer; }
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
     /* line 31, ../src/scss/style.scss */
-    .eventSlider-left, .eventSlider-right {
+    .eventSlider-dir-prev, .eventSlider-dir-next {
       background-image: url(../dist/img/jquery.eventSlider.sprite_2x.png);
       background-size: 120px; } }
 
 /* line 50, ../src/scss/style.scss */
-.eventSlider-left {
+.eventSlider-dir-prev {
   left: 0;
   background-position: left top; }
   /* line 55, ../src/scss/style.scss */
-  .eventSlider-left:hover {
+  .eventSlider-dir-prev:hover {
     background-position: left bottom; }
 
 /* line 60, ../src/scss/style.scss */
-.eventSlider-right {
+.eventSlider-dir-next {
   right: 0;
   background-position: right top; }
   /* line 65, ../src/scss/style.scss */
-  .eventSlider-right:hover {
+  .eventSlider-dir-next:hover {
     background-position: right bottom; }
 
 /* line 70, ../src/scss/style.scss */

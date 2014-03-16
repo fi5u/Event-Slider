@@ -20,7 +20,7 @@
         }
     }
 
-        .eventSlider-navbar {
+        .eventSlider-nav {
             position: absolute;
             top: 50%;
             left: 0;
@@ -47,7 +47,7 @@
                 }
             }
 
-            .eventSlider-left {
+            .eventSlider-dir-prev {
                 @extend %nav-direction;
                 left: 0;
                 background-position: left top;
@@ -57,7 +57,7 @@
                 }
             }
 
-            .eventSlider-right {
+            .eventSlider-dir-next {
                 @extend %nav-direction;
                 right: 0;
                 background-position: right top;

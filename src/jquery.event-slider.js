@@ -7,6 +7,7 @@
             hoverPause: false,
             direction: 'next',
             pager: true,
+            nav: true,
             firstSlide: 0,
             renderSingle: false,
             eventsPre: [],
@@ -125,7 +126,29 @@
              *  Inject the nav element into the DOM
              */
 
-            $(this.element).closest('.' + pluginName + '-wrap').append('<div class="' + pluginName + '-navbar"><div class="'+pluginName+'-left"></div><div class="'+pluginName+'-right"></div>');
+            //$(this.element).closest('.' + pluginName + '-wrap').append('<div class="' + pluginName + '-navbar"><div class="'+pluginName+'-left"></div><div class="'+pluginName+'-right"></div>');
+
+            var selfNavEl,
+
+                // Set self so that 'this' can be accessed from delegate
+                self = this;
+
+            // If nav is required, go ahead and build it
+            if (this.options.nav) {
+
+                // Set the HTML for the nav element
+                this.slider.navEl = $('<div class="' + pluginName + '-nav"><div class="'+pluginName+'-dir-prev"></div><div class="'+pluginName+'-dir-next"></div></div>');
+
+                // Add the nav element to the DOM
+                $(this.element).closest('.' + pluginName + '-wrap').append(this.slider.navEl);
+
+                selfNavEl = this.slider.navEl;
+
+                // Assign the nav click binding
+                this.slider.navEl.delegate('div[class^="'+pluginName+'-dir-"]', 'click', function() {
+                    self.navClick(selfNavEl, this);
+                });
+            }
         },
 
         buildPager: function() {
@@ -575,6 +598,17 @@
                 self.next();
                 event.preventDefault();
             });
+        },
+
+        navClick: function(nav, navItem) {
+            /**
+             *  Slider nav click events
+             */
+            var classArr = $(navItem).attr('class').split('-'),
+                direction = classArr[classArr.length - 1];
+
+            // Begin advancing the slider
+            this.advance(direction);
         },
 
         pagerClick: function(pager, pagerItem) {
