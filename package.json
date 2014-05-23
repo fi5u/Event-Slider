@@ -4,7 +4,7 @@
   "description": "A responsive CSS slider that can fire multiple custom events.",
   "author": "Tommy Fisher",
   "homepage": "http://tommyfisher.net",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.7",
