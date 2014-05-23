@@ -1,7 +1,7 @@
 ;(function ( $, window, document, undefined ) {
-	// Create the defaults once
-	var pluginName = 'eventSlider',
-		defaults = {
+    // Create the defaults once
+    var pluginName = 'eventSlider',
+        defaults = {
             auto: true,
             delay: 3000,
             hoverPause: false,
@@ -23,19 +23,19 @@
             onPostEnd: function(){}
         };
 
-	function Plugin ( element, options ) {
+    function Plugin ( element, options ) {
         /**
          *  The plugin constructor.
          */
 
-		this.element = element;
-		this.options = $.extend( {}, defaults, options );
-		this._defaults = defaults;
-		this._name = pluginName;
-		this.init();
-	}
+        this.element = element;
+        this.options = $.extend( {}, defaults, options );
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.init();
+    }
 
-	Plugin.prototype = {
+    Plugin.prototype = {
         // Set instance-wide vars
         slider: {}, // Namespace
         slideCount: '', // Number of slides
@@ -47,7 +47,7 @@
         timingsFunctionsPre: [],
         timingsFunctionsPost: [],
 
-		init: function () {
+        init: function () {
             /**
              *  Set the slider up at runtime
              */
@@ -65,10 +65,12 @@
 
                 // Set heights of li elements
                 this.setLiH();
+            }
 
-                // Wrap the slider to allow nav to be inserted
-                this.buildWrap();
+            // Wrap the slider to allow nav to be inserted whether multiple slides or not
+            this.buildWrap();
 
+            if (this.slideCount > 1 || this.options.renderSingle === true) {
                 // Insert the slider nav into the DOM
                 this.buildNav();
 
@@ -80,9 +82,12 @@
 
                 // Detect if the browser supports CSS transforms
                 this.detectCss();
+            }
 
-                // Bind to window resize event
-                this.resize();
+            // Bind to window resize event whether multiple slides or not
+            this.resize();
+
+            if (this.slideCount > 1 || this.options.renderSingle === true) {
 
                 // Bind the hover event
                 this.hoverPauseFn();
@@ -103,7 +108,7 @@
                     this.start();
                 }
             }
-		},
+        },
 
 
 
@@ -678,14 +683,14 @@
                 self.setLiH();
             });
         }
-	};
+    };
 
 
 
-	/**
+    /**
      *  Plugin wrapper around the constructor
      */
-	$.fn[ pluginName ] = function ( options ) {
+    $.fn[ pluginName ] = function ( options ) {
         var args = arguments,
             returns;
 
@@ -707,6 +712,6 @@
             });
             return returns !== undefined ? returns : this;
         }
-	};
+    };
 
 })( jQuery, window, document );
